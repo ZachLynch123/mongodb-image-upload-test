@@ -5,6 +5,14 @@ const parser = require('body-parser');
 // initialize app
 const app = express();
 
+const db = require('./model/key').mongoURI;
+
+
+mongoose
+.connect(db, { useNewUrlParser: true })
+.then(() => console.log('Database Connected'))
+.catch(e => console.log(e));
+
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
